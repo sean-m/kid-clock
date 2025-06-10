@@ -114,10 +114,8 @@ void loop() {
   int hours = timeinfo.tm_hour;
   auto end = hours <= 12 ? "A" : "P";
   
-  // Shift for 12 hour clock
-  hours = hours <= 12 ? hours : hours - 12;
   
-  snprintf(timestr, sizeof(timestr), "%d:%02d", hours, timeinfo.tm_min);
+  strftime(timestr, sizeof(timestr), "%I:%M", &timeinfo);
   
   // Write the time large with AM/PM smaller at the end
   display.clearDisplay();
